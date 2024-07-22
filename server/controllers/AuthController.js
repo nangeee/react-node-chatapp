@@ -1,11 +1,11 @@
-import User from '../models/UserModel';
-import {sign} from 'jsonwebtoken';
+import User from '../models/UserModel.js';
+import jwt from 'jsonwebtoken';
 
 const maxAge = 3 * 24 * 60 * 60 * 1000;
 
 // JWT 생성 함수
 const createToken = (email, userId) => {
-  return sign({email, userId}, process.env.JWT_KEY, {expiresIn: maxAge})
+  return jwt.sign({email, userId}, process.env.JWT_KEY, {expiresIn: maxAge})
 }
 
 // 회원가입 함수
